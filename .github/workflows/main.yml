@@ -1,0 +1,23 @@
+name: Run My First Script
+
+# Ye script kab chalegi? 
+on:
+  push:         # Jab bhi aap code badlenge tab chalega
+  schedule:
+    - cron: '0 12 * * *' # Aur roz raat ko 12 baje (UTC) apne aap chalega
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest # GitHub hume ek free Linux computer dega
+    steps:
+      - name: Copy Repository Code
+        uses: actions/checkout@v4 # Aapka code us computer me copy hoga
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5 # Python install hoga
+        with:
+          python-version: '3.10'
+          
+      - name: Run Script
+        run: python script.py # Aapki script run ho jayegi
+        
